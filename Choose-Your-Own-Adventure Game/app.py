@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -15,7 +15,10 @@ def start():
         ('run_away',"Run away as fast as you can!!!")
     ]
 
-    return render_template('adventure.html', title=title, text=text, choices=choices)
+
+    picture_url = url_for('static', filename='first.png')
+
+    return render_template('adventure.html', title=title, text=text, choices=choices, picture_url = picture_url)
 
 
 
@@ -32,7 +35,9 @@ def enter_house():
         ('run_away',"Try to escape out the front door")
     ]
 
-    return render_template('adventure.html', title=title, text=text, choices=choices)
+    picture_url = url_for('static', filename='second.jpg')
+
+    return render_template('adventure.html', title=title, text=text, choices=choices, picture_url = picture_url)
 
 
 @app.route("/continue")
@@ -46,7 +51,10 @@ def continue_going():
         ('run_away',"Try to escape out the front door")
     ]
 
-    return render_template('adventure.html', title=title, text=text, choices=choices)
+
+    picture_url = url_for('static', filename='third.jpg')
+
+    return render_template('adventure.html', title=title, text=text, choices=choices, picture_url = picture_url)
 
 
 @app.route("/escape")
